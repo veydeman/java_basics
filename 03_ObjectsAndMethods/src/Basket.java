@@ -4,6 +4,7 @@ public class Basket {
     private String items = "";
     private int totalPrice = 0;
     private int limit;
+    private double totalWeight = 0;
 
     public Basket() {
         increaseCount(1);
@@ -30,11 +31,10 @@ public class Basket {
         Basket.count = Basket.count + count;
     }
 
-    public void add(String name, int price) {
-        add(name, price, 1);
+    public void add(String name, int price) {add(name, price, 1);
     }
 
-    public void add(String name, int price, int count) {
+    public void add(String name, int price, int count){
         boolean error = false;
         if (contains(name)) {
             error = true;
@@ -50,9 +50,16 @@ public class Basket {
         }
 
         items = items + "\n" + name + " - " +
-            count + " шт. - " + price;
+            count + " шт. - " + price + " руб.";
         totalPrice = totalPrice + count * price;
     }
+
+    public void add(String name, int price, int count, double weight) {add(name, price, count);
+        totalWeight = totalWeight + weight * count;
+        items = items + " - " + weight + " грамм";
+    }
+
+
 
     public void clear() {
         items = "";
@@ -61,6 +68,10 @@ public class Basket {
 
     public int getTotalPrice() {
         return totalPrice;
+    }
+
+    public double getTotalWeight() {
+        return totalWeight;
     }
 
     public boolean contains(String name) {
@@ -73,6 +84,8 @@ public class Basket {
             System.out.println("Корзина пуста");
         } else {
             System.out.println(items);
+            System.out.println("Общая стоимость корзины: " + getTotalPrice());
+            System.out.println("Общая масса корзины: " + getTotalWeight());
         }
     }
 }
