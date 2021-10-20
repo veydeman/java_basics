@@ -3,22 +3,17 @@ public class ArithmeticCalculator {
     public static double a;
     public static double b;
 
-    public Operation operation;
-
-    public ArithmeticCalculator (double a, double b, Operation operation) {
+    public ArithmeticCalculator(double a, double b) {
         ArithmeticCalculator.a = a;
         ArithmeticCalculator.b = b;
-        this.operation = operation;
     }
 
-    public double calculate () {
+    public double calculate(Operation operation) {
         if (operation == Operation.ADD) {
             return a + b;
-        }
-        else if (operation == Operation.MULTIPLY) {
+        } else if (operation == Operation.MULTIPLY) {
             return a * b;
-        }
-        else {
+        } else {
             return a - b;
         }
     }
