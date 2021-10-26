@@ -5,10 +5,10 @@ public class Computer {
     private Storage storage;
     private Display display;
     private Keyboard keyboard;
-    private final String vendor;
-    private final String name;
+    private final ComputerVendor vendor;
+    private final ComputerName name;
 
-    public Computer(String vendor, String name) {
+    public Computer(ComputerVendor vendor, ComputerName name) {
         this.vendor = vendor;
         this.name = name;
     }
@@ -18,23 +18,23 @@ public class Computer {
                 display.getWeight() + keyboard.getWeight();
     }
 
-    public void setProcessor(int frequency, int coreNumber, String maker, int weight) {
+    public void setProcessor(int frequency, int coreNumber, CPUMaker maker, int weight) {
         this.processor = new CPU(frequency, coreNumber, maker, weight);
     }
 
-    public void setMemory(String type, int size, int weight) {
+    public void setMemory(RAMType type, int size, int weight) {
         this.memory = new RAM(type, size, weight);
     }
 
-    public void setStorage(String type, int size, int weight) {
+    public void setStorage(StorageType type, int size, int weight) {
         this.storage = new Storage(type, size, weight);
     }
 
-    public void setDisplay(int screenSize, String type, int weight) {
+    public void setDisplay(int screenSize, DisplayType type, int weight) {
         this.display = new Display(screenSize, type, weight);
     }
 
-    public void setKeyboard(String type, boolean rgbLight, int weight) {
+    public void setKeyboard(KeyboardType type, KeyboardRGBLight rgbLight, int weight) {
         this.keyboard = new Keyboard(type, rgbLight, weight);
     }
 
@@ -74,7 +74,7 @@ public class Computer {
                 "   | Размер экрана -  " + getDisplay().getScreenSize() + " дюймов" +
                 " | Вес - " + getDisplay().getWeight() + " г" + "\n" +
                 " Клавиатура: Тип - " + getKeyboard().getType() +
-                " | Подсветка - " + getKeyboard().isRgbLight()
+                " | Подсветка - " + getKeyboard().getRgbLight()
                 + " | Вес - " + getKeyboard().getWeight() + " г" + "\n" +
                 " Разработчик: " + vendor + "\n" +
                 " Название: " + name + "\n" +

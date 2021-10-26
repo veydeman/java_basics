@@ -2,10 +2,10 @@ public class CPU {
 
     private final int frequency;
     private final int coreNumber;
-    private final String maker;
+    private final CPUMaker maker;
     private final int weight;
 
-    public CPU(int frequency, int coreNumber, String maker, int weight) {
+    public CPU(int frequency, int coreNumber, CPUMaker maker, int weight) {
         this.frequency = frequency;
         this.coreNumber = coreNumber;
         this.maker = maker;
@@ -20,7 +20,7 @@ public class CPU {
         return coreNumber;
     }
 
-    public String getMaker() {
+    public CPUMaker getMaker() {
         return maker;
     }
 

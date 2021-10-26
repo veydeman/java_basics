@@ -1,10 +1,10 @@
 public class Keyboard {
 
-    private final String type;
-    private final boolean rgbLight;
+    private final KeyboardType type;
+    private final KeyboardRGBLight rgbLight;
     private final int weight;
 
-    public Keyboard(String type, boolean rgbLight, int weight) {
+    public Keyboard(KeyboardType type, KeyboardRGBLight rgbLight, int weight) {
         this.type = type;
         this.rgbLight = rgbLight;
         this.weight = weight;
@@ -14,14 +14,13 @@ public class Keyboard {
         return weight;
     }
 
-    public String getType() {
+    public KeyboardType getType() {
         return type;
     }
 
-    public String isRgbLight() {
-        if (this.rgbLight) {
-            return "Есть";
-        } else
-            return "Отсутствует";
+    public KeyboardRGBLight getRgbLight() {
+        return rgbLight;
     }
+
 }
+

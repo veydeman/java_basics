@@ -1,10 +1,10 @@
 public class Display {
 
     private final int screenSize;
-    private final String type;
+    private final DisplayType type;
     private final int weight;
 
-    public Display(int screenSize, String type, int weight) {
+    public Display(int screenSize, DisplayType type, int weight) {
         this.screenSize = screenSize;
         this.type = type;
         this.weight = weight;
@@ -18,7 +18,7 @@ public class Display {
         return screenSize;
     }
 
-    public String getType() {
+    public DisplayType getType() {
         return type;
     }
 }

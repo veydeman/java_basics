@@ -1,10 +1,10 @@
 public class RAM {
 
-    private final String type;
+    private final RAMType type;
     private final int size;
     private final int weight;
 
-    public RAM(String type, int size, int weight) {
+    public RAM(RAMType type, int size, int weight) {
         this.type = type;
         this.size = size;
         this.weight = weight;
@@ -14,7 +14,7 @@ public class RAM {
         return weight;
     }
 
-    public String getType() {
+    public RAMType getType() {
         return type;
     }
 

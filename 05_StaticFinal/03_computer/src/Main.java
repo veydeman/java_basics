@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        Computer computer = new Computer("ASUS", "TRB434");
-        computer.setProcessor(4000, 4, "Intel", 500);
-        computer.setKeyboard("Механическая", false, 1500);
-        computer.setDisplay(29, "IPS", 5000);
-        computer.setMemory("DDR3", 16, 100);
-        computer.setStorage("SSD", 500, 300);
+        Computer computer = new Computer(ComputerVendor.MSI, ComputerName.NBM500);
+        computer.setProcessor(4000,4,CPUMaker.INTEL,400);
+        computer.setKeyboard(KeyboardType.Mechanic,KeyboardRGBLight.YES,400);
+        computer.setDisplay(29,DisplayType.IPS,4000);
+        computer.setMemory(RAMType.DDR3, 16, 200);
+        computer.setStorage(StorageType.SSD,500,500);
         System.out.println(computer.getComputerWeight());
-        System.out.println(computer.toString());
+        System.out.println(computer);
     }
 }
 
