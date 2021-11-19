@@ -7,6 +7,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 //        while (true) {
         String input = scanner.nextLine();
+//        if (input.equals("0")) {
+//            break;
+//        }
+
         //TODO:напишите ваш код тут, результат вывести в консоль.
         //При невалидном ФИО вывести в консоль: Введенная строка не является ФИО
         char a = ' ';
@@ -18,7 +22,7 @@ public class Main {
         boolean isDigit = false;
 
         if (input.isEmpty()) {
-            System.out.println("Введенная строка не является ФИО1");
+            System.out.println("Введенная строка не является ФИО");
         }
         if (!input.isEmpty()) {
             for (int i = 0; i < input.length(); i++) {
