@@ -28,13 +28,10 @@ public class Main {
             if (input.equals("0")) {
                 break;
             }
-
             //TODO: write code here
-            if (input.matches(LIST_REGEX)) {
+            else if (input.matches(LIST_REGEX)) {
                 emailList.getSortedEmails();
-                continue;
-            }
-            if (input.matches(EMAIL_PATTERN)) {
+            } else if (input.matches(EMAIL_PATTERN)) {
                 emailList.add(input.substring(4));
             } else System.out.println(WRONG_EMAIL_ANSWER);
         }
