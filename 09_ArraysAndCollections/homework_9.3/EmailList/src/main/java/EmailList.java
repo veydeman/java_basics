@@ -9,7 +9,6 @@ public class EmailList {
         if (email.matches(EMAIL_PATTERN)) {
             treeSet.add(email.toLowerCase());
         }
-        // TODO: валидный формат email добавляется
     }
 
     public ArrayList<String> getSortedEmails() {
@@ -18,7 +17,6 @@ public class EmailList {
             System.out.println(email);
             a.add(email);
         }
-        // TODO: возвращается список электронных адресов в алфавитном порядке
         return a;
     }
 }
