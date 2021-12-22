@@ -14,8 +14,9 @@ public class Main {
             System.out.println("Введите номер, имя или команду");
             String a = scanner.nextLine();
             String b;
-            if (a.matches(PHONE_PATTERN + "\\p{Space}" + "\\p{IsAlphabetic}+")) {
+            if (a.matches(PHONE_PATTERN + "\\p{Space}" + NAME_PATTERN)) {
                 book.addContact(a.substring(0, 11), a.substring(12));
+                System.out.println("Контакт сохранен!");
             } else if (a.matches(LIST_PATTERN)) {
                 book.getAllContacts();
             } else if (a.matches(PHONE_PATTERN)) {
@@ -27,6 +28,7 @@ public class Main {
                     b = scanner.nextLine();
                     if (b.matches(NAME_PATTERN)) {
                         book.addContact(a, b);
+                        System.out.println("Контакт сохранен!");
                     } else System.out.println("Неверный формат ввода");
                 }
             } else if (a.matches(NAME_PATTERN)) {
@@ -38,6 +40,7 @@ public class Main {
                     b = scanner.nextLine();
                     if (b.matches(PHONE_PATTERN)) {
                         book.addContact(b, a);
+                        System.out.println("Контакт сохранен!");
                     } else System.out.println("Неверный формат ввода");
                 }
             } else System.out.println("Неверный формат ввода");
