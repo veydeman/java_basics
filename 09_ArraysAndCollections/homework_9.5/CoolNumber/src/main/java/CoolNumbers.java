@@ -24,33 +24,54 @@ public class CoolNumbers {
                 }
             }
         }
-
-//        for (String a : plates
-//        ) {
-//            System.out.print(a);
-//        }
-        System.out.println(plates.size());
         return plates;
     }
 
     public static boolean bruteForceSearchInList(List<String> list, String number) {
+        long start = System.nanoTime();
+        if (list.contains(number)) {
+            long estTime = System.nanoTime() - start;
+            System.out.println("Поиск перебором: номер найден, поиск занял: " + estTime);
+            return true;
+        }
+        long estTime = System.nanoTime() - start;
+        System.out.println("Поиск перебором: номер не найден, поиск занял: " + estTime);
         return false;
     }
 
     public static boolean binarySearchInList(List<String> sortedList, String number) {
-
+        long start = System.nanoTime();
+        if (Collections.binarySearch(sortedList, number) >= 0) {
+            long estTime = System.nanoTime() - start;
+            System.out.println("Бинарный поиск: номер найден, поиск занял: " + estTime);
+            return true;
+        }
+        long estTime = System.nanoTime() - start;
+        System.out.println("Бинарный поиск: номер не найден, поиск занял: " + estTime);
         return false;
     }
 
-
     public static boolean searchInHashSet(HashSet<String> hashSet, String number) {
-
+        long start = System.nanoTime();
+        if (hashSet.contains(number)) {
+            long estTime = System.nanoTime() - start;
+            System.out.println("Поиск в HashSet: номер найден, поиск занял: " + estTime);
+            return true;
+        }
+        long estTime = System.nanoTime() - start;
+        System.out.println("Поиск в HashSet: номер не найден, поиск занял: " + estTime);
         return false;
     }
 
     public static boolean searchInTreeSet(TreeSet<String> treeSet, String number) {
-
+        long start = System.nanoTime();
+        if (treeSet.contains(number)) {
+            long estTime = System.nanoTime() - start;
+            System.out.println("Поиск в TreeSet: номер найден, поиск занял: " + estTime);
+            return true;
+        }
+        long estTime = System.nanoTime() - start;
+        System.out.println("Поиск в TreeSet: номер не найден, поиск занял: " + estTime);
         return false;
     }
-
 }
