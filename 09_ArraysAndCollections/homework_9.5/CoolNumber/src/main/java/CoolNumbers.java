@@ -31,11 +31,11 @@ public class CoolNumbers {
         long start = System.nanoTime();
         if (list.contains(number)) {
             long estTime = System.nanoTime() - start;
-            System.out.println("Поиск перебором: номер найден, поиск занял: " + estTime);
+            System.out.println("Поиск перебором: номер найден, поиск занял: " + estTime + " нс");
             return true;
         }
         long estTime = System.nanoTime() - start;
-        System.out.println("Поиск перебором: номер не найден, поиск занял: " + estTime);
+        System.out.println("Поиск перебором: номер не найден, поиск занял: " + estTime + " нс");
         return false;
     }
 
@@ -43,11 +43,11 @@ public class CoolNumbers {
         long start = System.nanoTime();
         if (Collections.binarySearch(sortedList, number) >= 0) {
             long estTime = System.nanoTime() - start;
-            System.out.println("Бинарный поиск: номер найден, поиск занял: " + estTime);
+            System.out.println("Бинарный поиск: номер найден, поиск занял: " + estTime + " нс");
             return true;
         }
         long estTime = System.nanoTime() - start;
-        System.out.println("Бинарный поиск: номер не найден, поиск занял: " + estTime);
+        System.out.println("Бинарный поиск: номер не найден, поиск занял: " + estTime + " нс");
         return false;
     }
 
@@ -55,11 +55,11 @@ public class CoolNumbers {
         long start = System.nanoTime();
         if (hashSet.contains(number)) {
             long estTime = System.nanoTime() - start;
-            System.out.println("Поиск в HashSet: номер найден, поиск занял: " + estTime);
+            System.out.println("Поиск в HashSet: номер найден, поиск занял: " + estTime + " нс");
             return true;
         }
         long estTime = System.nanoTime() - start;
-        System.out.println("Поиск в HashSet: номер не найден, поиск занял: " + estTime);
+        System.out.println("Поиск в HashSet: номер не найден, поиск занял: " + estTime + " нс");
         return false;
     }
 
@@ -67,11 +67,11 @@ public class CoolNumbers {
         long start = System.nanoTime();
         if (treeSet.contains(number)) {
             long estTime = System.nanoTime() - start;
-            System.out.println("Поиск в TreeSet: номер найден, поиск занял: " + estTime);
+            System.out.println("Поиск в TreeSet: номер найден, поиск занял: " + estTime + " нс");
             return true;
         }
         long estTime = System.nanoTime() - start;
-        System.out.println("Поиск в TreeSet: номер не найден, поиск занял: " + estTime);
+        System.out.println("Поиск в TreeSet: номер не найден, поиск занял: " + estTime + " нс");
         return false;
     }
 }

@@ -13,14 +13,14 @@ public class Main {
         CoolNumbers.binarySearchInList(arrayList, "А777МР77");
 
         TreeSet<String> treeSet = new TreeSet<>();
-        treeSet.addAll(CoolNumbers.generateCoolNumbers());
+        treeSet.addAll(arrayList);
         CoolNumbers.searchInTreeSet(treeSet, "Н761ЕР25");
 
         HashSet<String> hashSet = new HashSet<>();
-        hashSet.addAll(CoolNumbers.generateCoolNumbers());
+        hashSet.addAll(arrayList);
         CoolNumbers.searchInHashSet(hashSet, "Х913МК13");
 
-        CoolNumbers.bruteForceSearchInList(CoolNumbers.generateCoolNumbers(), "У132МН21");
+        CoolNumbers.bruteForceSearchInList(arrayList, "У132МН21");
     }
 }
         /* Вывод: поиск в HashSet самый быстрый, а поиск перебором самый медленный. */
