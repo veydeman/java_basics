@@ -2,31 +2,30 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-//        Operator a = new Operator();
-//        System.out.println(a.getSalary());
-//        Operator b = new Operator();
-//        System.out.println(b.getSalary());
-//        Manager manager = new Manager();
-//        System.out.println(manager.getSalary());
-//        TopManager topManager = new TopManager();
-//        System.out.println(topManager.getSalary());
-//
-        Company company = new Company();
-        Manager manager = new Manager();
-        Operator operator = new Operator();
-        TopManager topManager = new TopManager();
-        Manager manager2 = new Manager();
-        ArrayList<Employee> staff = new ArrayList<>();
-        staff.add(manager);
-        staff.add(operator);
-        staff.add(topManager);
-        staff.add(manager2);
-        System.out.println(company.hireAll(staff));
-//        System.out.println(company.getIncome());
-//        System.out.println(operator.getMonthSalary());
-//        System.out.println(company.getTopSalaryStaff(3));
-//        System.out.println(company.getLowestSalaryStaff(3));
 
+        Company company = new Company();
+        ArrayList<Employee> staff = new ArrayList<>();
+
+        for (int i = 1; i <= 180; i++) {
+            staff.add(new Operator());
+        }
+        for (int i = 1; i <= 80; i++) {
+            staff.add(new Manager());
+        }
+        for (int i = 1; i <= 10; i++) {
+            staff.add(new TopManager());
+        }
+
+        company.hireAll(staff);
+        System.out.println("Список из 15 самых высоких зарплат: " + company.getTopSalaryStaff(15) + "\n");
+        System.out.println("Список из 30 самых низких зарплат: " + company.getLowestSalaryStaff(30) + "\n");
+
+        for (int i = 0; i <= staff.size() / 2; i++) {
+            company.fire(staff.get(i));
+        }
+
+        System.out.println("Список из 15 самых высоких зарплат: " + company.getTopSalaryStaff(15) + "\n");
+        System.out.println("Список из 30 самых низких зарплат: " + company.getLowestSalaryStaff(30));
     }
 }
 

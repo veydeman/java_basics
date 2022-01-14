@@ -25,16 +25,17 @@ public class Company {
 
     public double getIncome() {
         double income = 0;
-        for(Employee a : employees){
+        for (Employee a : employees) {
             income += a.getMoneyGot();
         }
         return income;
     }
 
     public ArrayList<Employee> getTopSalaryStaff(int count) {
+        Collections.sort(employees);
         Collections.reverse(employees);
         ArrayList<Employee> reversedList = new ArrayList<>();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             reversedList.add(employees.get(i));
         }
         return reversedList;
@@ -42,9 +43,8 @@ public class Company {
 
     public ArrayList<Employee> getLowestSalaryStaff(int count) {
         Collections.sort(employees);
-//        List sortedList = employees.sublist();
         ArrayList<Employee> sortedList = new ArrayList<>();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             sortedList.add(employees.get(i));
         }
         return sortedList;
