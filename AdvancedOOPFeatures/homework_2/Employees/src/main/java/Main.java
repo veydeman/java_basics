@@ -1,4 +1,9 @@
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class Main {
 
@@ -11,8 +16,11 @@ public class Main {
     }
 
     public static Employee findEmployeeWithHighestSalary(List<Employee> staff, int year) {
-        //TODO Метод должен вернуть сотрудника с максимальной зарплатой среди тех,
-        // кто пришёл в году, указанном в переменной year
-        return null;
+        String dateFormat = "dd.MM.yyyy";
+        SimpleDateFormat a = new SimpleDateFormat(dateFormat);
+        ArrayList<Employee> result = staff.stream().filter(employee -> a.format(employee.getWorkStart())
+                .substring(6, 10).equals(Integer.toString(year))).max(Comparator.comparing(Employee::getSalary))
+                .stream().collect(Collectors.toCollection(ArrayList::new));
+        return result.get(result.size() - 1);
     }
 }
