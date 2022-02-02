@@ -32,7 +32,7 @@ public class Main {
                 } else {
                     System.out.println(COMMAND_ERROR);
                 }
-            }catch (IllegalArgumentException exception){
+            } catch (IllegalArgumentException exception) {
                 System.out.println(exception.getMessage());
             }
         }
