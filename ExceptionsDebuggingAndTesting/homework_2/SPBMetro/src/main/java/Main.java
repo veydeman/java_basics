@@ -1,9 +1,10 @@
 import core.Line;
 import core.Station;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,21 +13,30 @@ import java.util.Scanner;
 
 public class Main
 {
-    private static String dataFile = "src/main/resources/map.json";
+    private static String dataFile = "C:\\Users\\jenny\\java_basics\\ExceptionsDebuggingAndTesting\\homework_2\\SPBMetro\\src\\main\\resources\\map.json";
     private static Scanner scanner;
 
     private static StationIndex stationIndex;
 
+    private static Logger logger;
+
     public static void main(String[] args)
     {
+
         RouteCalculator calculator = getRouteCalculator();
+        logger = LogManager.getRootLogger();
 
         System.out.println("Программа расчёта маршрутов метрополитена Санкт-Петербурга\n");
         scanner = new Scanner(System.in);
         for(;;)
         {
+            try {
             Station from = takeStation("Введите станцию отправления:");
+            logger.info("Введите станцию отправления: " + from);
+
             Station to = takeStation("Введите станцию назначения:");
+            logger.info("Введите станцию назначения: " + to);
+
 
             List<Station> route = calculator.getShortestRoute(from, to);
             System.out.println("Маршрут:");
@@ -34,6 +44,10 @@ public class Main
 
             System.out.println("Длительность: " +
                 RouteCalculator.calculateDuration(route) + " минут");
+        }catch (IllegalArgumentException ex) {
+                System.out.println(ex.getMessage());
+                logger.warn(ex.getMessage());
+    }
         }
     }
 
@@ -69,10 +83,14 @@ public class Main
         {
             System.out.println(message);
             String line = scanner.nextLine().trim();
+            if(line.equals("123")){                                         // условие для выброса исключения
+                throw new IllegalArgumentException("Ошибка " + line);
+            }
             Station station = stationIndex.getStation(line);
             if(station != null) {
                 return station;
             }
+            logger.error("Станция не найдена: " + line);
             System.out.println("Станция не найдена :(");
         }
     }
