@@ -13,7 +13,7 @@ public class Main {
                 "Someone say that people were kinder before. But now people are more educated and now everyone has an\n" +
                 "opportunity to go to school and to get education. It’s better to think of advantages to live in the\n" +
                 "modern world than to regret something that no longer exists.";
-        splitTextIntoWords(txt);
+        System.out.println(splitTextIntoWords(txt));
     }
 
     public static String splitTextIntoWords(String text) {
