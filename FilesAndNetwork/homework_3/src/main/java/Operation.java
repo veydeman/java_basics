@@ -29,6 +29,10 @@ public class Operation {
         return rashod;
     }
 
+    public String getOpDiscpription() {
+        return opDiscpription;
+    }
+
     @Override
     public String toString() {
         return "Operation{" +
