@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
-    private String number;
-    private String name;
+    private final String number;
+    private final String name;
     public List<Station> stations;
 
     public Line(String number, String name) {

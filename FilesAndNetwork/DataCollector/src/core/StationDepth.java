@@ -1,8 +1,8 @@
 package core;
 
 public class StationDepth {
-    String station;
-    String depth;
+    private String station;
+    private String depth;
 
     public StationDepth(String station, String depth) {
         this.station = station;

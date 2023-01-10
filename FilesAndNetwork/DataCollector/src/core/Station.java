@@ -1,8 +1,8 @@
 package core;
 
 public class Station implements Comparable {
-    private Line line;
-    private String name;
+    private final Line line;
+    private final String name;
     private boolean connection;
 
     public Station(String name, Line line) {

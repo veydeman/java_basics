@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ParseCsv {
 
-    private static ArrayList<DataIndex> objects = new ArrayList<>();
     public static ArrayList<StationDate> stationDatesList = new ArrayList<>();
     public static ArrayList<StationDepth> stationDepthsList = new ArrayList<>();
 

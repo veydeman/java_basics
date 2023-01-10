@@ -1,8 +1,6 @@
 package core;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,7 +69,7 @@ public class WriteJson {
         return objects;
     }
 
-    public JSONObject writeJsonFile(ArrayList<DataIndex> objects) throws IOException {
+    public JSONObject writeJsonFile(ArrayList<DataIndex> objects) {
         JSONObject jsonObject = new JSONObject();
         JSONArray stationsArray = new JSONArray();
         jsonObject.put("stations", stationsArray);

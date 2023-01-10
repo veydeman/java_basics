@@ -14,7 +14,6 @@ import java.util.List;
 public class ParseJson {
 
     public static JSONArray jsonData = new JSONArray();
-    public static ArrayList<DataIndex> objects = new ArrayList<>();
     public static ArrayList<StationDate> stationDatesList = new ArrayList<>();
     public static ArrayList<StationDepth> stationDepthsList = new ArrayList<>();
 

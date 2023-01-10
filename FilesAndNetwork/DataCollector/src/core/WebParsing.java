@@ -18,7 +18,7 @@ public class WebParsing {
     static final String URL = "https://skillbox-java.github.io/";
     static StationIndex stationIndex = new StationIndex();
 
-    public WebParsing() throws IOException {
+    public WebParsing() {
     }
 
     public static StationIndex parseHtml() throws IOException {

@@ -2,8 +2,8 @@ package core;
 import java.time.LocalDate;
 
 public class StationDate {
-    String station;
-    LocalDate date;
+    private String station;
+    private LocalDate date;
 
     public StationDate(String station, LocalDate date) {
         this.station = station;

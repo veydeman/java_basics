@@ -4,10 +4,10 @@ import java.time.format.DateTimeFormatter;
 
 public class DataIndex {
 
-    private String station;
-    private LocalDate date;
-    private String depth;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    private final String station;
+    private final LocalDate date;
+    private final String depth;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     public DataIndex(String station, LocalDate date, String depth) {
         this.station = station;
