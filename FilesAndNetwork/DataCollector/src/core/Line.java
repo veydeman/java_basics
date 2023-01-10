@@ -1,12 +1,11 @@
 package core;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
     private String number;
     private String name;
-    private List<Station> stations;
+    public List<Station> stations;
 
     public Line(String number, String name) {
         this.number = number;
@@ -29,7 +28,6 @@ public class Line {
     public List<Station> getStations() {
         return stations;
     }
-
 
     @Override
     public String toString() {

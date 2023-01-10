@@ -3,6 +3,7 @@ package core;
 public class Station implements Comparable {
     private Line line;
     private String name;
+    private boolean connection;
 
     public Station(String name, Line line) {
         this.name = name;
@@ -17,6 +18,13 @@ public class Station implements Comparable {
         return name;
     }
 
+    public void setConnection(boolean connection){
+        this.connection = connection;
+    }
+
+    public boolean getConnection() {
+        return connection;
+    }
 
     @Override
     public String toString() {

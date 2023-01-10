@@ -1,11 +1,12 @@
 package core;
-
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class StationIndex {
-    public static HashMap<String, Line> number2line;
-    TreeSet<Station> stations;
-    TreeMap<Station, TreeSet<Station>> connections;
+
+    public HashMap<String, Line> number2line;
+    public TreeSet<Station> stations;
+    public TreeMap<Station, TreeSet<Station>> connections;
 
     public StationIndex() {
         number2line = new HashMap<>();
@@ -19,6 +20,19 @@ public class StationIndex {
 
     public void addLine(Line line) {
         number2line.put(line.getNumber(), line);
+    }
+
+    public void addConnection(ArrayList<Station> stations)
+    {
+        for(Station station : stations)
+        {
+            if(!connections.containsKey(station)) {
+                connections.put(station, new TreeSet<>());
+            }
+            TreeSet<Station> connectedStations = connections.get(station);
+            connectedStations.addAll(stations.stream()
+                    .filter(s -> !s.equals(station)).collect(Collectors.toList()));
+        }
     }
 
     public Line getLine(String number) {
