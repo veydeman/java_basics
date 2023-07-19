@@ -1,16 +1,25 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        String url = "jdbs:mysql://localhost:3036/courses";
+        String url = "jdbc:mysql://localhost:3306/courses";
         String user = "root";
-        String pass = "9449259";
+        String pass = "pass";
         Connection connection = DriverManager.getConnection(url, user, pass);
         Statement statement = connection.createStatement();
-        System.out.println(statement.executeQuery("Select * from courses"));
 
+        ResultSet resultSet = statement.executeQuery("select p.course_name, " +
+                "count(p.subscription_date) / (max(month(p.subscription_date)) - min(month(p.subscription_date)) + 1)" +
+                "from purchaselist p group by p.course_name;");
+
+        while (resultSet.next()) {
+            String format = "%-" + 40 + "s"; // Выравнивание по левому краю
+            System.out.printf(format, resultSet.getString("p.course_name"));
+            System.out.println(resultSet.getFloat ("count(p.subscription_date) / " +
+                    "(max(month(p.subscription_date)) - min(month(p.subscription_date)) + 1)"));
+        }
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 }
