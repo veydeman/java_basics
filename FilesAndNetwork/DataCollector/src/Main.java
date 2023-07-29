@@ -10,18 +10,19 @@ public class Main {
         File file = new File("C:\\Users\\jenny\\java_basics\\FilesAndNetwork\\DataCollector\\data\\data");
         FileSearch f = new FileSearch();
         f.fileSearch(file);
-        WebParsing webParsing =new WebParsing();
-        StationIndex stationIndex = webParsing.createStationIndex();
-        webParsing.parseHtml();
-        ArrayList<StationDate> csvDates = ParseCsv.parseCSVdates();
-        ArrayList<StationDepth> csvDepths = ParseCsv.parseCSVdepth();
-        ArrayList<StationDate> jsonDates = ParseJson.parseJsonDates();
-        ArrayList<StationDepth> jsonDepths = ParseJson.parseJsonDepths();
-        ArrayList<StationDate> dates = WriteJson.CompareDates(jsonDates,csvDates);
-        ArrayList<StationDepth> depths = WriteJson.CompareDepths(jsonDepths,csvDepths);
-        ArrayList<DataIndex> objects = WriteJson.compareDatesAndDepths(dates,depths);
-        WriteJson writeJson = new WriteJson();
-        writeJson.writeJsonFile(objects);
-        System.out.println(stationIndex);
+        System.out.println(file);
+//        WebParsing webParsing =new WebParsing();
+//        StationIndex stationIndex = webParsing.createStationIndex();
+//        webParsing.parseHtml();
+//        ArrayList<StationDate> csvDates = ParseCsv.parseCSVdates();
+//        ArrayList<StationDepth> csvDepths = ParseCsv.parseCSVdepth();
+//        ArrayList<StationDate> jsonDates = ParseJson.parseJsonDates();
+//        ArrayList<StationDepth> jsonDepths = ParseJson.parseJsonDepths();
+//        ArrayList<StationDate> dates = WriteJson.CompareDates(jsonDates,csvDates);
+//        ArrayList<StationDepth> depths = WriteJson.CompareDepths(jsonDepths,csvDepths);
+//        ArrayList<DataIndex> objects = WriteJson.compareDatesAndDepths(dates,depths);
+//        WriteJson writeJson = new WriteJson();
+//        writeJson.writeJsonFile(objects);
+//        System.out.println(stationIndex);
     }
 }

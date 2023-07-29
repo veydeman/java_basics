@@ -1,34 +1,21 @@
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import java.util.Date;
 
-
+@Entity
+@Table(name = "purchaselist")
 public class PurchaseList {
 
-
-    private String student;
-
-
-    private String course;
+    @Column(length = 5)
+    @EmbeddedId
+    private KeyPurchaseList id;
 
     private int price;
 
-
+    @Column(name = "subscription_date")
     private Date date;
-
-    public String getStudent() {
-        return student;
-    }
-
-    public void setStudent(String student) {
-        this.student = student;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
 
     public int getPrice() {
         return price;

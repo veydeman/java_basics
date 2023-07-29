@@ -8,17 +8,17 @@ public class FileSearch {
     static ArrayList<File> csvAndJson = new ArrayList<>();
 
     public static void fileSearch(File folder) {
-        for (File f : folder.listFiles()) {
-            if ((f.isFile() && f.getName().contains(".json"))) {
-                filesJSON.add(f);
-                csvAndJson.add(f);
+        for (File file : folder.listFiles()) {
+            if ((file.isFile() && file.getName().contains(".json"))) {
+                filesJSON.add(file);
+                csvAndJson.add(file);
             }
-            if (f.isFile() && f.getName().contains(".csv")) {
-                filesCSV.add(f);
-                csvAndJson.add(f);
+            if (file.isFile() && file.getName().contains(".csv")) {
+                filesCSV.add(file);
+                csvAndJson.add(file);
             }
-            if (f.isDirectory()) {
-                fileSearch(f);
+            if (file.isDirectory()) {
+                fileSearch(file);
             }
         }
     }
