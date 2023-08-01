@@ -1,4 +1,5 @@
 package core;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -29,14 +30,14 @@ public class DataIndex {
     }
 
     public String getDate() {
-        if(date==null){
+        if (date == null) {
             return "null";
         }
         return date.format(formatter);
     }
 
     public String getDepth() {
-        if(depth==null){
+        if (depth == null) {
             return "null";
         }
         return depth;

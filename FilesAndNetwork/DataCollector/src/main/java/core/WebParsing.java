@@ -1,4 +1,5 @@
 package core;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -6,6 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -57,7 +59,7 @@ public class WebParsing {
         }
         jsonObject.put("lines", jsonArray);
 
-        try (FileWriter file1 = new FileWriter("C:\\Users\\jenny\\Desktop\\METRO\\data\\metro.json")) {
+        try (FileWriter file1 = new FileWriter("C:\\Users\\Jenya\\java_basics\\FilesAndNetwork\\DataCollector\\data\\metro.json")) {
             file1.write(jsonObject.toJSONString());
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -112,8 +114,8 @@ public class WebParsing {
     private static String getJsonFile() {
         StringBuilder builder = new StringBuilder();
         try {
-            List<String> lines = Files.readAllLines(Paths.get("C:\\Users\\jenny\\java_basics" +
-                    "\\FilesAndNetwork\\DataCollector\\data\\metro.json"));
+            List<String> lines = Files.readAllLines(Paths.get("C:\\Users\\Jenya\\java_basics\\FilesAndNetwork\\" +
+                    "DataCollector\\data\\metro.json"));
             lines.forEach(line -> builder.append(line));
         } catch (Exception ex) {
             ex.printStackTrace();

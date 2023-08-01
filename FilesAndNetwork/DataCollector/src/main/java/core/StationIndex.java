@@ -1,4 +1,5 @@
 package core;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,11 +23,9 @@ public class StationIndex {
         number2line.put(line.getNumber(), line);
     }
 
-    public void addConnection(ArrayList<Station> stations)
-    {
-        for(Station station : stations)
-        {
-            if(!connections.containsKey(station)) {
+    public void addConnection(ArrayList<Station> stations) {
+        for (Station station : stations) {
+            if (!connections.containsKey(station)) {
                 connections.put(station, new TreeSet<>());
             }
             TreeSet<Station> connectedStations = connections.get(station);

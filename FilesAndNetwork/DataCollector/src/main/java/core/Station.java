@@ -18,7 +18,7 @@ public class Station implements Comparable {
         return name;
     }
 
-    public void setConnection(boolean connection){
+    public void setConnection(boolean connection) {
         this.connection = connection;
     }
 

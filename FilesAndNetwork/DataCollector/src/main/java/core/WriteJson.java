@@ -1,6 +1,8 @@
 package core;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,9 +58,9 @@ public class WriteJson {
         return jsonDepths;
     }
 
-    public static ArrayList compareDatesAndDepths(ArrayList<StationDate> dates, ArrayList<StationDepth> depths){
+    public static ArrayList compareDatesAndDepths(ArrayList<StationDate> dates, ArrayList<StationDepth> depths) {
         ArrayList<DataIndex> objects = new ArrayList<>();
-        for(StationDepth stationDepth :depths){
+        for (StationDepth stationDepth : depths) {
             for (StationDate stationDate : dates) {
                 if (stationDepth.getStation().equalsIgnoreCase(stationDate.getStation())) {
                     objects.add(new DataIndex(stationDepth.getStation(), stationDate.getDate(),
@@ -89,7 +91,7 @@ public class WriteJson {
             stationsArray.add(stationObject);
         }
 
-        try (FileWriter fileWriter = new FileWriter("C:\\Users\\jenny\\java_basics\\FilesAndNetwork" +
+        try (FileWriter fileWriter = new FileWriter("C:\\Users\\Jenya\\java_basics\\FilesAndNetwork" +
                 "\\DataCollector\\data\\stations.json")) {
             fileWriter.write(jsonObject.toJSONString());
         } catch (IOException exception) {
