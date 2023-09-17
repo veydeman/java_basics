@@ -31,7 +31,8 @@ public class Basket {
         Basket.count = Basket.count + count;
     }
 
-    public void add(String name, int price) {add(name, price, 1);
+    public void add(String name, int price) {
+        add(name, price, 1);
     }
 
     public void add(String name, int price, int count){
@@ -54,7 +55,8 @@ public class Basket {
         totalPrice = totalPrice + count * price;
     }
 
-    public void add(String name, int price, int count, double weight) {add(name, price, count);
+    public void add(String name, int price, int count, double weight) {
+        add(name, price, count);
         totalWeight = totalWeight + weight * count;
         items = items + " - " + weight + " грамм";
     }

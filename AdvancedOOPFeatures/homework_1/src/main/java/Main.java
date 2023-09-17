@@ -1,5 +1,6 @@
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
 
 public class Main {
 
@@ -17,6 +18,7 @@ public class Main {
             else
                 return o1.getSalary().compareTo(o2.getSalary());
         });
+
         for (Employee employee : staff) {
             System.out.println(employee);
         }

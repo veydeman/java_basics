@@ -10,7 +10,7 @@ public class PurchaseList {
 
     @Column(length = 5)
     @EmbeddedId
-    private KeyPurchaseList id;
+    private LinkedPurchaseListKey id;
 
     private int price;
 

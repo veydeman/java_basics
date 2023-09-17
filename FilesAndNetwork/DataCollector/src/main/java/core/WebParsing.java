@@ -1,5 +1,4 @@
 package core;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -7,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
