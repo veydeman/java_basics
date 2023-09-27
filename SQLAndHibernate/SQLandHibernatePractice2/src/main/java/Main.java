@@ -1,47 +1,35 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.mapping.PrimaryKey;
-
-import static org.hibernate.id.PersistentIdentifierGenerator.PK;
+import java.util.List;
 
 
 public class Main {
     public static void main(String[] args) {
+        String format = "%-" + 30 + "s";
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure("hibernate.cfg.xml").build();
         Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
-
         Session session = sessionFactory.openSession();
-        SubscriptionsKey subscriptionsKey = new SubscriptionsKey();
+        Transaction transaction = session.beginTransaction();
 
-        LinkedPurchaseListKey linkedPurchaseListKey = new LinkedPurchaseListKey();
-        linkedPurchaseListKey.setCourseId(1);
-        linkedPurchaseListKey.setStudentId(37);
-        LinkedPurchaseList linkedPurchaseList = session.get(LinkedPurchaseList.class, linkedPurchaseListKey);
-
-
-//        LinkedPurchaseListKey keyLinkedPurchaseList = new LinkedPurchaseListKey(1,1);
-//        LinkedPurchaseListKey linkedPurchaseList = session.get(LinkedPurchaseListKey.class, keyLinkedPurchaseList);
-
-//        Teachers teacher = session.get(Teachers.class, 1);
-//
-//        String format = "%-" + 30 + "s";
-//        System.out.printf(format, teacher.getId());
-//        System.out.printf(format, teacher.getName());
-//        System.out.printf(format, teacher.getSalary());
-//        System.out.printf(format, teacher.getAge());
-//
-//        Courses course = session.get(Courses.class, 1);
-//        System.out.printf(format, course.getName());
-//        System.out.println(course.getDescription());
-//        List<Students> students = course.getStudents();
-//        students.forEach(student -> System.out.println(student.getName()));
-//        System.out.println(course.getTeacher().getName());
-
+        String hql = "SELECT students.id, courses.id FROM " + PurchaseList.class.getSimpleName() +
+                " as purchaselist INNER JOIN " + Students.class.getSimpleName() + " as students " +
+                " ON purchaselist.studentName " +
+                " = students.name " +
+                " INNER JOIN " + Courses.class.getSimpleName() + " as courses " +
+                " ON courses.name = purchaselist.courseName";
+        List<Object[]> list = session.createQuery(hql).getResultList();
+        for (Object[] o : list) {
+            LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList();
+            linkedPurchaseList.setId(new LinkedPurchaseListKey((int) o[0], (int) o[1]));
+            session.persist(linkedPurchaseList);
+        }
+        transaction.commit();
     }
 }

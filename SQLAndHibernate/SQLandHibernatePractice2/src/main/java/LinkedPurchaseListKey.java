@@ -1,12 +1,9 @@
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Id;
-
 import java.io.Serializable;
 
 @Embeddable
 public class LinkedPurchaseListKey implements Serializable {
-    static final int serialVersionUTD = 1;
 
     @Column(name="student_id")
     private int studentId;
@@ -38,5 +35,11 @@ public class LinkedPurchaseListKey implements Serializable {
         this.courseId = courseId;
     }
 
-
+    @Override
+    public String toString() {
+        return "LinkedPurchaseListKey{" +
+                "studentId=" + studentId +
+                ", courseId=" + courseId +
+                '}';
+    }
 }
