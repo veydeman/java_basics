@@ -31,5 +31,6 @@ public class Main {
             session.persist(linkedPurchaseList);
         }
         transaction.commit();
+        session.close();
     }
 }
