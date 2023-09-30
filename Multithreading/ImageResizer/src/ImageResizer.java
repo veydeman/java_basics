@@ -4,8 +4,8 @@ import java.io.File;
 
 public class ImageResizer extends Thread{
 
-    private File[] files;
-    String dstFolder = "";
+    private final File[] files;
+    String dstFolder;
 
     public ImageResizer(File[] files, String dstFolder){
         this.files = files;
