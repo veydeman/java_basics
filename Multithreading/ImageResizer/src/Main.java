@@ -9,28 +9,31 @@ public class Main {
 
         File srcDir = new File(srcFolder);
         int threads = Runtime.getRuntime().availableProcessors();
+        try {
+            File[] srcFiles = srcDir.listFiles();
 
-        File[] srcFiles = srcDir.listFiles();
-        int middle = srcFiles.length / threads;
-        ArrayList<File[]> arraysList = new ArrayList<>();
-        if (srcFiles.length % threads != 0) {
-            for (int i = 0; i < threads; i++) {
-                if (i < threads - 1) {
-                    File[] filesThreadArray = new File[srcFiles.length / threads];
-                    System.arraycopy(srcFiles, i > 0 ? i + i : i, filesThreadArray, 0,
-                            i < threads - 1 ? srcFiles.length / threads : srcFiles.length / threads + 1);
-                    arraysList.add(filesThreadArray);
-                } else {
-                    File[] files = new File[srcFiles.length - (i + i)];
-                    System.arraycopy(srcFiles, i + i, files, 0,
-                            srcFiles.length - (i + i));
-                    arraysList.add(files);
+            ArrayList<File[]> arraysList = new ArrayList<>();
+            if (srcFiles.length % threads != 0) {
+                for (int i = 0; i < threads; i++) {
+                    if (i < threads - 1) {
+                        File[] filesThreadArray = new File[srcFiles.length / threads];
+                        System.arraycopy(srcFiles, i > 0 ? i + i : i, filesThreadArray, 0,
+                                i < threads - 1 ? srcFiles.length / threads : srcFiles.length / threads + 1);
+                        arraysList.add(filesThreadArray);
+                    } else {
+                        File[] files = new File[srcFiles.length - (i + i)];
+                        System.arraycopy(srcFiles, i + i, files, 0,
+                                srcFiles.length - (i + i));
+                        arraysList.add(files);
+                    }
+                }
+                for (int i = 0; i < threads; i++) {
+                    ImageResizer imageResizer = new ImageResizer(arraysList.get(i), dstFolder);
+                    imageResizer.start();
                 }
             }
-            for (int i = 0; i < threads; i++) {
-                ImageResizer imageResizer = new ImageResizer(arraysList.get(i), dstFolder);
-                imageResizer.start();
-            }
+        } catch (NullPointerException exception) {
+            exception.printStackTrace();
         }
     }
 }
