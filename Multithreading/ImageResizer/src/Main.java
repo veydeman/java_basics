@@ -10,27 +10,27 @@ public class Main {
         File srcDir = new File(srcFolder);
         int threads = Runtime.getRuntime().availableProcessors();
 
-        File[] files1 = srcDir.listFiles();
-        int middle = files1.length / threads;
-        ArrayList<File[]> list = new ArrayList<>();
-        if (files1.length % threads != 0) {
+        File[] srcFiles = srcDir.listFiles();
+        int middle = srcFiles.length / threads;
+        ArrayList<File[]> arraysList = new ArrayList<>();
+        if (srcFiles.length % threads != 0) {
             for (int i = 0; i < threads; i++) {
                 if (i < threads - 1) {
-                    File[] files = new File[files1.length / threads];
-                    System.arraycopy(files1, i > 0 ? i + 2 : i, files, 0,
-                            i < threads - 1 ? files1.length / threads : files1.length / threads + 1);
-                    list.add(files);
+                    File[] filesThreadArray = new File[srcFiles.length / threads];
+                    System.arraycopy(srcFiles, i > 0 ? i + i : i, filesThreadArray, 0,
+                            i < threads - 1 ? srcFiles.length / threads : srcFiles.length / threads + 1);
+                    arraysList.add(filesThreadArray);
                 } else {
-                    File[] files = new File[files1.length / threads + 1];
-                    System.arraycopy(files1, 13, files, 0,
-                            files1.length / threads + 1);
-                    list.add(files);
+                    File[] files = new File[srcFiles.length - (i + i)];
+                    System.arraycopy(srcFiles, i + i, files, 0,
+                            srcFiles.length - (i + i));
+                    arraysList.add(files);
                 }
             }
-        }
-        for(int i = 0; i < threads; i++){
-            ImageResizer imageResizer = new ImageResizer(list.get(i), dstFolder);
-            imageResizer.start();
+            for (int i = 0; i < threads; i++) {
+                ImageResizer imageResizer = new ImageResizer(arraysList.get(i), dstFolder);
+                imageResizer.start();
+            }
         }
     }
 }
