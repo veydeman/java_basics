@@ -1,6 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Arrays;
 
 public class ImageResizer extends Thread{
 
@@ -45,7 +46,7 @@ public class ImageResizer extends Thread{
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Duration: " + ImageResizer.currentThread() + " ~~~ "
+        System.out.println(Arrays.toString(files) + " ~~~~ " + "Duration: " + ImageResizer.currentThread() + " ~~~ "
                 + ((System.currentTimeMillis() - start) / 1000));
     }
 }

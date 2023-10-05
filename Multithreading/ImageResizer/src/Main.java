@@ -20,19 +20,21 @@ public class Main {
                     System.arraycopy(srcFiles, i > 0 ? i + i : i, filesThreadArray, 0,
                             i < threads - 1 ? srcFiles.length / threads : srcFiles.length / threads + 1);
                     arraysList.add(filesThreadArray);
-                } else {
-                    File[] files = new File[srcFiles.length - (i + i)];
-                    System.arraycopy(srcFiles, i + i, files, 0,
-                            srcFiles.length - (i + i));
-                    arraysList.add(files);
                 }
             }
+        } else {
             for (int i = 0; i < threads; i++) {
-                ImageResizer imageResizer = new ImageResizer(arraysList.get(i), dstFolder);
-                imageResizer.start();
+                File[] files = new File[srcFiles.length / threads];
+                System.arraycopy(srcFiles, i > 0 ? i + i + i : i, files, 0,
+                        srcFiles.length / threads);
+                arraysList.add(files);
             }
         }
-
+        for (int i = 0; i < threads; i++) {
+            ImageResizer imageResizer = new ImageResizer(arraysList.get(i), dstFolder);
+            imageResizer.start();
+        }
     }
 }
+
 
